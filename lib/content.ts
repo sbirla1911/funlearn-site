@@ -164,9 +164,9 @@ export const savedContent = [
 ];
 
 export const challenges = [
-  { text: "Score from 30 m: find the kick angle", done: true },
-  { text: "Scale a recipe to feed 12", done: false },
-  { text: "Beat the level-6 XP puzzle", done: false },
+  { text: "Score from 30 m: find the kick angle", done: true, xp: 50 },
+  { text: "Scale a recipe to feed 12", done: false, xp: 40 },
+  { text: "Beat the level-6 XP puzzle", done: false, xp: 60 },
 ];
 
 export const friendsLearning = [
@@ -179,4 +179,46 @@ export const outputKinds = [
   { label: "A short video", accent: "sky" as Accent, icon: "▶" },
   { label: "An infographic", accent: "grape" as Accent, icon: "📊" },
   { label: "A game to play", accent: "grass" as Accent, icon: "🎮" },
+];
+
+/* ─────────────── Progress / retention (dashboard) ─────────────── */
+
+export const streak = {
+  current: 5,
+  longest: 12,
+  // last 7 days, oldest → today (the last one is today, still open)
+  week: [
+    { label: "M", done: true },
+    { label: "T", done: true },
+    { label: "W", done: true },
+    { label: "T", done: true },
+    { label: "F", done: true, today: true },
+    { label: "S", done: false },
+    { label: "S", done: false },
+  ] as { label: string; done: boolean; today?: boolean }[],
+};
+
+export const progress = {
+  level: 4,
+  title: "Curious Mind",
+  xpIntoLevel: 320,
+  xpPerLevel: 500,
+  totalXp: 2320,
+};
+
+export const badges = [
+  { icon: "🔥", label: "5-day streak", earned: true },
+  { icon: "⚽", label: "Football scholar", earned: true },
+  { icon: "🧪", label: "First reaction", earned: true },
+  { icon: "📈", label: "Reached Level 4", earned: true },
+  { icon: "🏆", label: "Weekly winner", earned: false },
+  { icon: "🌱", label: "Biology buff", earned: false },
+];
+
+export const leaderboard = [
+  { name: "Sam", initial: "S", color: "sunny", xp: 640 },
+  { name: "Maya", initial: "M", color: "grape", xp: 520, you: true },
+  { name: "Priya", initial: "P", color: "blossom", xp: 480 },
+  { name: "Leo", initial: "L", color: "grass", xp: 300 },
+  { name: "Nora", initial: "N", color: "grape", xp: 240 },
 ];

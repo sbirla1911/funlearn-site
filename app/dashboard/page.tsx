@@ -4,6 +4,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Avatar from "@/components/Avatar";
 import LessonLauncher from "@/components/LessonLauncher";
+import StatsStrip from "@/components/StatsStrip";
 import { SubjectTile } from "@/components/Art";
 import { Sparkle, Hills, Sun } from "@/components/Illustrations";
 import {
@@ -13,6 +14,7 @@ import {
   challenges,
   friendsLearning,
   outputKinds,
+  leaderboard,
 } from "@/lib/content";
 
 const outputPillClass: Record<string, string> = {
@@ -81,6 +83,37 @@ export default function Dashboard() {
               ))}
             </ul>
           </div>
+
+          {/* weekly leaderboard */}
+          <div className="rounded-4xl border border-black/[0.06] bg-white p-4 shadow-card">
+            <div className="mb-3 flex items-center gap-2">
+              <span aria-hidden>🏆</span>
+              <h2 className="text-sm font-bold uppercase tracking-wide text-muted">This week&apos;s leaders</h2>
+            </div>
+            <ol className="space-y-1.5">
+              {leaderboard.map((p, i) => (
+                <li
+                  key={p.name}
+                  className={`flex items-center gap-2.5 rounded-2xl px-2.5 py-2 ${
+                    p.you ? "bg-grape-soft" : ""
+                  }`}
+                >
+                  <span className={`w-4 text-center text-sm font-bold ${i === 0 ? "text-sunny" : "text-muted"}`}>
+                    {i + 1}
+                  </span>
+                  <Avatar initial={p.initial} color={p.color} className="h-7 w-7 text-xs" />
+                  <span className="flex-1 text-sm font-semibold text-ink">
+                    {p.name}
+                    {p.you && <span className="ml-1 text-xs font-bold text-grape">you</span>}
+                  </span>
+                  <span className="text-xs font-bold tabular-nums text-muted">{p.xp}</span>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-2.5 rounded-2xl bg-sunny/20 px-3 py-2 text-xs font-semibold text-[#9a7a12]">
+              120 XP behind Sam — close the gap!
+            </p>
+          </div>
         </aside>
 
         {/* ── Main ── */}
@@ -90,6 +123,11 @@ export default function Dashboard() {
               Hey Maya, what are we untangling today?
             </h1>
             <Sparkle className="mt-1 w-8 flex-none" />
+          </div>
+
+          {/* streak / level / badges */}
+          <div className="mt-6">
+            <StatsStrip />
           </div>
 
           {/* create card */}
@@ -192,9 +230,14 @@ export default function Dashboard() {
 
             {/* challenges */}
             <section className="rounded-4xl border border-sunny/50 bg-sunny/20 p-5">
-              <div className="flex items-center gap-2">
-                <h3 className="font-serif text-xl font-bold text-ink">This week&apos;s challenges</h3>
-                <span aria-hidden>🏆</span>
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <h3 className="font-serif text-xl font-bold text-ink">This week&apos;s challenges</h3>
+                  <span aria-hidden>🏆</span>
+                </div>
+                <span className="rounded-full bg-white/70 px-2.5 py-0.5 text-xs font-bold text-ink">
+                  {challenges.filter((c) => c.done).length}/{challenges.length}
+                </span>
               </div>
               <ul className="mt-4 space-y-3">
                 {challenges.map((c) => (
@@ -213,10 +256,21 @@ export default function Dashboard() {
                         </svg>
                       )}
                     </span>
-                    <span className="text-sm font-medium text-ink">{c.text}</span>
+                    <span className={`flex-1 text-sm font-medium ${c.done ? "text-muted line-through" : "text-ink"}`}>
+                      {c.text}
+                    </span>
+                    <span className={`flex-none rounded-full px-2 py-0.5 text-[11px] font-bold ${
+                      c.done ? "bg-grass/15 text-grass-dark" : "bg-sunny/50 text-[#9a7a12]"
+                    }`}>
+                      +{c.xp} XP
+                    </span>
                   </li>
                 ))}
               </ul>
+              <div className="mt-3 flex items-center gap-2 rounded-2xl bg-tangerine-soft px-3 py-2.5 text-xs font-semibold text-tangerine">
+                <span aria-hidden>🔥</span>
+                Solve 1 more today to keep your 5-day streak going!
+              </div>
             </section>
 
             {/* friends learning */}
