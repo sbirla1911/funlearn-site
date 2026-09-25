@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #fcfbf6;
+  --ink: #1f2a37;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Yellow marker highlight behind text (like the wireframe's "you love") */
+.marker {
+  background-image: linear-gradient(transparent 55%, #fce38a 55%);
+  padding: 0 0.1em;
+  border-radius: 2px;
+}
+.marker-green {
+  background-image: linear-gradient(transparent 55%, #bfe8cd 55%);
+  padding: 0 0.1em;
+}
+
+/* Reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─────────── Animated lesson "videos" ─────────── */
+/* Everything animates only once the stage gets the .is-playing class. */
+
+.lesson-stage .anim {
+  opacity: 0;
+}
+.lesson-stage.is-playing .anim {
+  opacity: 1;
+}
+
+@keyframes lp-pop {
+  0% { opacity: 0; transform: scale(0.4); }
+  70% { transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes lp-grow-up {
+  0% { opacity: 0; transform: scaleY(0); }
+  100% { opacity: 1; transform: scaleY(1); }
+}
+@keyframes lp-grow-x {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+@keyframes lp-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes lp-ball {
+  0% { offset-distance: 0%; opacity: 0; }
+  6% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 1; }
+}
+@keyframes lp-fade-in {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes lp-flow {
+  0% { opacity: 0; transform: translate(var(--fx,0), var(--fy,0)); }
+  30% { opacity: 1; }
+  100% { opacity: 0.9; transform: translate(0, 0); }
+}
+@keyframes lp-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+@keyframes lp-caption {
+  0% { opacity: 0; transform: translateY(6px); }
+  12% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-4px); }
+}
+
+/* caption track: each line fades in/out in its own time window */
+.lp-caption {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+}
+.is-playing .lp-caption {
+  animation: lp-caption var(--cap-dur, 1.8s) ease both;
+  animation-delay: var(--cap-delay, 0s);
+}
+.is-playing .lp-caption.lp-caption-last {
+  animation: lp-fade-in 0.5s ease both;
+  animation-delay: var(--cap-delay, 0s);
+}
+
+.is-playing .anim-pop { animation: lp-pop 0.6s cubic-bezier(.2,.8,.3,1.2) both; }
+.is-playing .anim-grow { animation: lp-grow-up 0.7s ease both; transform-origin: bottom; }
+.is-playing .anim-growx { animation: lp-grow-x 0.8s ease both; transform-origin: left; }
+.is-playing .anim-draw { animation: lp-draw 1.6s ease forwards; }
+.is-playing .anim-ball { animation: lp-ball 2.6s cubic-bezier(.4,0,.7,1) forwards; }
+.is-playing .anim-flow { animation: lp-flow 1.1s ease both; }
+.is-playing .anim-fade { animation: lp-fade-in 0.6s ease both; }
+.is-playing .anim-pulse { animation: lp-pulse 1.4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-float,
+  .animate-fade-up,
+  .animate-pop-in {
+    animation: none !important;
+  }
+  .lesson-stage .anim { opacity: 1; }
+  .is-playing .anim,
+  .is-playing .lp-caption { animation: none; opacity: 1; }
+  .is-playing .lp-caption:not(.lp-caption-last) { opacity: 0; }
+}
