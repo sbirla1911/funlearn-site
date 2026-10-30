@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Example, Accent } from "@/lib/content";
-import { SubjectArt } from "./Art";
+import { sampleAsset } from "@/lib/video/asset";
 
 const accentStyles: Record<
   Accent,
@@ -56,8 +56,13 @@ export default function ExampleCard({ example }: { example: Example }) {
             <span className={`font-serif italic ${s.interest}`}>{example.interest}</span>
           </p>
         </div>
-        <div className="w-28 flex-none sm:w-32">
-          <SubjectArt kind={example.illustration} className="w-full" />
+        <div className="w-28 flex-none sm:w-36">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={sampleAsset(example.id)}
+            alt=""
+            className="aspect-[4/3] w-full rounded-2xl border border-black/10 object-cover shadow-sm"
+          />
         </div>
       </div>
 

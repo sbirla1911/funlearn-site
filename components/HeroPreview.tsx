@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { examples, heroInterests } from "@/lib/content";
-import AnimatedLesson from "./AnimatedLesson";
+import { sampleAsset } from "@/lib/video/asset";
 import LessonLauncher from "./LessonLauncher";
 
 const annotations: Record<string, string> = {
@@ -38,10 +38,9 @@ export default function HeroPreview() {
                 aria-label={`Play the ${ex.title} lesson`}
                 className="group relative block w-full text-left"
               >
-                {/* static first frame of the animated lesson = the poster */}
-                <div className="lesson-stage">
-                  <AnimatedLesson id={ex.id} />
-                </div>
+                {/* polished sample still = the poster */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={sampleAsset(ex.id)} alt={ex.title} className="aspect-video w-full object-cover" />
                 {/* handwriting annotation */}
                 <span className="pointer-events-none absolute left-1/2 top-2 -translate-x-1/2 rotate-[-4deg] font-hand text-2xl font-bold text-ink/85">
                   {annotations[ex.id]}
