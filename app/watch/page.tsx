@@ -48,22 +48,41 @@ export default function WatchPage() {
 
   const scenes = useMemo<PlayerScene[]>(() => {
     if (!manifest) return [];
-    return manifest.scenes.map((s) =>
-      s.type === "check"
-        ? { type: "check", beat: s.beat, prompt: s.prompt, answer: s.answer, durationMs: 0 }
-        : {
-            type: s.type,
-            beat: s.beat,
-            caption: s.caption,
-            narration: s.narration,
-            reveal: s.reveal,
-            equations: s.equations,
-            durationMs: s.durationMs,
-            audioUrl: s.audio ? lessonAsset(manifest.cacheKey, s.audio) : undefined,
-            imageUrl: s.image ? lessonAsset(manifest.cacheKey, s.image) : undefined,
-            artNote: s.art,
-          },
-    );
+    const asset = (f?: string) => (f ? lessonAsset(manifest.cacheKey, f) : undefined);
+
+    // 1) Continuous intro clip — the ball flies across the opening scene.
+    const open = manifest.scenes.find((s) => s.beat === "open" && s.type !== "check");
+    const intro: PlayerScene = {
+      type: "intro",
+      beat: "intro",
+      caption: "Watch it fly — then we'll break down the physics.",
+      narration: open && open.type !== "check" ? open.narration : "Watch the whole kick happen first.",
+      durationMs: 5200,
+      bgUrl: asset("intro.png"),
+      audioUrl: open && open.type !== "check" ? asset(open.audio) : undefined,
+    };
+
+    // 2) The physics part — the teach beats (diagrams + stills) and the check.
+    const physics = manifest.scenes
+      .filter((s) => s.type === "teach" || s.type === "check")
+      .map<PlayerScene>((s) =>
+        s.type === "check"
+          ? { type: "check", beat: s.beat, prompt: s.prompt, answer: s.answer, durationMs: 0 }
+          : {
+              type: s.type,
+              beat: s.beat,
+              caption: s.caption,
+              narration: s.narration,
+              reveal: s.reveal,
+              equations: s.equations,
+              durationMs: s.durationMs,
+              audioUrl: asset(s.audio),
+              imageUrl: asset(s.image),
+              artNote: s.art,
+            },
+      );
+
+    return [intro, ...physics];
   }, [manifest]);
 
   return (

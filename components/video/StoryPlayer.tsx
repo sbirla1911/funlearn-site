@@ -13,6 +13,16 @@ import ProjectileDiagram from "@/components/video/ProjectileDiagram";
 
 export type PlayerScene =
   | {
+      /** Continuous opening clip: the ball actually flies across the AI scene. */
+      type: "intro";
+      beat: string;
+      caption: string;
+      narration: string;
+      durationMs: number;
+      bgUrl?: string;
+      audioUrl?: string;
+    }
+  | {
       type: "motion" | "teach";
       beat: string;
       caption: string;
@@ -38,7 +48,7 @@ export default function StoryPlayer({
   scenes: PlayerScene[];
   autoStart?: boolean;
 }) {
-  const hasAudio = scenes.some((s) => s.type !== "check" && s.audioUrl);
+  const hasAudio = scenes.some((s) => s.type !== "check" && Boolean(s.audioUrl));
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(autoStart && !hasAudio);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -65,8 +75,10 @@ export default function StoryPlayer({
     if (scene.type === "check") return;
     const advance = () => setIndex((i) => Math.min(i + 1, scenes.length - 1));
     const a = audioRef.current;
-    if (scene.audioUrl && a) {
-      a.play().catch(() => {});
+    if (a && scene.audioUrl) a.play().catch(() => {});
+    // Teach/motion beats advance when their narration ends; the intro clip runs on
+    // its own timer so the ball finishes its flight regardless of narration length.
+    if (scene.audioUrl && a && scene.type !== "intro") {
       a.addEventListener("ended", advance, { once: true });
       return () => a.removeEventListener("ended", advance);
     }
@@ -80,14 +92,15 @@ export default function StoryPlayer({
     setPlaying(true);
   }
 
-  const reveal = scene.type === "check" ? ALL_REVEAL : scene.reveal;
+  const isIntro = scene.type === "intro";
   const isMotion = scene.type === "motion";
-  const artUrl = scene.type !== "check" ? scene.imageUrl : undefined;
-  // Motion beats show the AI art full-bleed; teach/check beats show the precise
-  // diagram (with the beat's art as a small corner thumbnail).
-  const bgArt = isMotion ? artUrl : undefined;
+  const reveal = scene.type === "check" ? ALL_REVEAL : scene.type === "teach" || scene.type === "motion" ? scene.reveal : {};
+  const artUrl = scene.type === "motion" || scene.type === "teach" ? scene.imageUrl : undefined;
+  // Intro + motion beats show the AI scene full-bleed; teach/check beats show the
+  // precise diagram (with the beat's art as a small corner thumbnail).
+  const bgArt = isMotion ? artUrl : isIntro ? scene.bgUrl : undefined;
   const thumbArt = scene.type === "teach" ? artUrl : undefined;
-  const showDiagram = !isMotion || !artUrl;
+  const showDiagram = !bgArt; // diagram is the backdrop only when there's no scene image
   const diagramReveal = showDiagram ? reveal : {};
 
   return (
@@ -99,10 +112,35 @@ export default function StoryPlayer({
         {/* diagram defines the stage size; it's the sizer even when hidden under art */}
         <ProjectileDiagram solution={solution} reveal={diagramReveal} backdrop={showDiagram} />
 
-        {/* full-bleed AI art on motion beats — with a slow camera (Ken Burns) move */}
+        {/* full-bleed AI art on intro + motion beats — with a slow camera (Ken Burns) move */}
         {bgArt && (
           // eslint-disable-next-line @next/next/no-img-element
           <img key={index} src={bgArt} alt="" className="kenburns absolute inset-0 h-full w-full object-cover" />
+        )}
+
+        {/* intro clip: the ball actually flies across the scene (continuous motion) */}
+        {isIntro && playing && (
+          <svg
+            key={`fly-${index}`}
+            viewBox="0 0 760 440"
+            preserveAspectRatio="xMidYMid slice"
+            className="pointer-events-none absolute inset-0 h-full w-full"
+            aria-hidden
+          >
+            <path id={`flight-${index}`} d="M205 348 Q450 55 615 270" fill="none" stroke="none" />
+            {/* faint arc trail */}
+            <path d="M205 348 Q450 55 615 270" fill="none" stroke="#ffffff" strokeOpacity="0.5" strokeWidth="3" strokeDasharray="2 10" strokeLinecap="round" />
+            <g>
+              <circle r="13" fill="#ffffff" stroke="#1F2A37" strokeWidth="2.5" />
+              <circle r="3.4" cx="0" cy="0" fill="#1F2A37" />
+              <circle r="2.4" cx="7" cy="-6" fill="#1F2A37" />
+              <circle r="2.4" cx="-7" cy="6" fill="#1F2A37" />
+              <circle r="2.4" cx="7" cy="6" fill="#1F2A37" />
+              <animateMotion dur="4.2s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.3 0 0.75 1">
+                <mpath href={`#flight-${index}`} />
+              </animateMotion>
+            </g>
+          </svg>
         )}
 
         {/* scene-art thumbnail on teach beats (the still for this moment) */}
@@ -112,14 +150,14 @@ export default function StoryPlayer({
         )}
 
         {/* art-prompt note (only when there's no real still yet) */}
-        {scene.type !== "check" && !artUrl && scene.artNote && (
+        {(scene.type === "motion" || scene.type === "teach") && !artUrl && scene.artNote && (
           <div className="absolute left-4 top-4 max-w-[60%] rounded-2xl bg-white/85 px-3 py-2 text-[11px] font-medium text-muted shadow-sm backdrop-blur">
             🎨 <span className="font-semibold text-ink">scene art →</span> {scene.artNote}
           </div>
         )}
 
-        {/* motion beats: caption over the art at the bottom */}
-        {isMotion && (
+        {/* intro + motion beats: caption over the scene at the bottom */}
+        {(isMotion || isIntro) && (
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 via-ink/45 to-transparent px-6 pb-6 pt-14 text-center">
             <p className="font-serif text-xl font-bold text-paper drop-shadow sm:text-2xl">{scene.caption}</p>
             <p className="mx-auto mt-1 max-w-2xl text-sm text-paper/85">🔊 {scene.narration}</p>
