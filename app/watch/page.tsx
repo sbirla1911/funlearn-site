@@ -3,6 +3,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { solveProjectile } from "@/lib/video/engine/projectile";
 import StoryPlayer, { type PlayerScene } from "@/components/video/StoryPlayer";
+import LessonInfographic from "@/components/video/LessonInfographic";
+import ProjectileGame from "@/components/video/ProjectileGame";
+import LessonQuiz from "@/components/video/LessonQuiz";
 import type { LessonManifest } from "@/lib/video/types";
 import { lessonsIndexUrl, lessonManifestUrl, lessonAsset } from "@/lib/video/asset";
 
@@ -126,6 +129,13 @@ export default function WatchPage() {
                 <span className="font-semibold text-tangerine">placeholder (enable image billing for real art)</span>
               )}
               . Diagram values are computed — R = {manifest.derived.range} m, H = {manifest.derived.hMax} m.
+            </div>
+
+            {/* what you get, below the video */}
+            <div className="mt-6 space-y-6">
+              <LessonInfographic solution={solution} interest={manifest.interest} />
+              <ProjectileGame />
+              <LessonQuiz />
             </div>
           </>
         )}
