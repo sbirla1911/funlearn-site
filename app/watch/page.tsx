@@ -60,12 +60,12 @@ export default function WatchPage() {
       durationMs: 5200,
       bgUrl: asset("intro.png"),
       audioUrl: open && open.type !== "check" ? asset(open.audio) : undefined,
+      ballKind: /basket/i.test(manifest.interest) ? "basketball" : "football",
     };
 
-    // 2) The lesson: physics diagrams (teach) interleaved with full-scene stills
-    //    that show the ball's progress (motion). The intro clip replaces "open".
+    // 2) The physics part — the teach beats (diagrams + stills) and the check.
     const physics = manifest.scenes
-      .filter((s) => s.beat !== "open")
+      .filter((s) => s.type === "teach" || s.type === "check")
       .map<PlayerScene>((s) =>
         s.type === "check"
           ? { type: "check", beat: s.beat, prompt: s.prompt, answer: s.answer, durationMs: 0 }

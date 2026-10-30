@@ -21,6 +21,7 @@ export type PlayerScene =
       durationMs: number;
       bgUrl?: string;
       audioUrl?: string;
+      ballKind?: "football" | "basketball";
     }
   | {
       type: "motion" | "teach";
@@ -131,11 +132,23 @@ export default function StoryPlayer({
             {/* faint arc trail */}
             <path d="M205 348 Q450 55 615 270" fill="none" stroke="#ffffff" strokeOpacity="0.5" strokeWidth="3" strokeDasharray="2 10" strokeLinecap="round" />
             <g>
-              <circle r="13" fill="#ffffff" stroke="#1F2A37" strokeWidth="2.5" />
-              <circle r="3.4" cx="0" cy="0" fill="#1F2A37" />
-              <circle r="2.4" cx="7" cy="-6" fill="#1F2A37" />
-              <circle r="2.4" cx="-7" cy="6" fill="#1F2A37" />
-              <circle r="2.4" cx="7" cy="6" fill="#1F2A37" />
+              {scene.ballKind === "basketball" ? (
+                <>
+                  <circle r="13" fill="#E8822E" stroke="#1F2A37" strokeWidth="2" />
+                  <line x1="0" y1="-13" x2="0" y2="13" stroke="#1F2A37" strokeWidth="1.5" />
+                  <line x1="-13" y1="0" x2="13" y2="0" stroke="#1F2A37" strokeWidth="1.5" />
+                  <path d="M-9 -9 Q0 0 -9 9" fill="none" stroke="#1F2A37" strokeWidth="1.5" />
+                  <path d="M9 -9 Q0 0 9 9" fill="none" stroke="#1F2A37" strokeWidth="1.5" />
+                </>
+              ) : (
+                <>
+                  <circle r="13" fill="#ffffff" stroke="#1F2A37" strokeWidth="2.5" />
+                  <circle r="3.4" cx="0" cy="0" fill="#1F2A37" />
+                  <circle r="2.4" cx="7" cy="-6" fill="#1F2A37" />
+                  <circle r="2.4" cx="-7" cy="6" fill="#1F2A37" />
+                  <circle r="2.4" cx="7" cy="6" fill="#1F2A37" />
+                </>
+              )}
               <animateMotion dur="4.2s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.3 0 0.75 1">
                 <mpath href={`#flight-${index}`} />
               </animateMotion>
