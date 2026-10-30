@@ -1,0 +1,140 @@
+{
+  "cacheKey": "projectile__basketball__g9",
+  "concept": "projectile",
+  "interest": "basketball",
+  "grade": 9,
+  "inputs": {
+    "v": 9,
+    "theta": 62,
+    "g": 9.81
+  },
+  "derived": {
+    "vx": 4.23,
+    "vy0": 7.95,
+    "range": 6.85,
+    "hMax": 3.22,
+    "tFlight": 1.62,
+    "tApex": 0.81
+  },
+  "voice": "Leda",
+  "generatedAt": "2026-10-30T14:08:57.297Z",
+  "imageStatus": "ready",
+  "providers": {
+    "image": "gemini:gemini-2.5-flash-image",
+    "tts": "gemini:gemini-3.8-flash-tts"
+  },
+  "scenes": [
+    {
+      "type": "motion",
+      "beat": "open",
+      "caption": "Watch the shot.",
+      "narration": "Watch closely as the ball leaves the hands.",
+      "reveal": {},
+      "durationMs": 4260,
+      "art": "the player on the left about to launch a shot, the hoop on the right. ALWAYS the exact same scene: a cartoon outdoor basketball court seen from the side, a hoop on the far right, same player, same court and sky in every image — only the ball's position changes.",
+      "audio": "open.wav",
+      "audioMs": 3560,
+      "prompt": "Flat 2D storybook illustration for a children's educational video. Warm and friendly, soft rounded shapes, gentle shading, thick clean outlines. Cream paper background (#FCFBF6). Colour palette: grass green #46B06A, sky blue #4E9BE6, sunny yellow #FBD24E, tangerine #F0994A, grape purple #8B7FE8. Wide 16:9 composition, lots of open space, NO text, NO numbers, NO words anywhere in the image.\nKeep the SAME main character in every scene — a cheerful kid about 12 years old with short dark hair, warm brown skin, big friendly eyes, cartoon proportions. Identical clothing and look across all scenes. Wearing a purple basketball jersey number 7, shorts, high-top sneakers, holding/relating to an orange basketball.\nScene to illustrate: the player on the left about to launch a shot, the hoop on the right. ALWAYS the exact same scene: a cartoon outdoor basketball court seen from the side, a hoop on the far right, same player, same court and sky in every image — only the ball's position changes..",
+      "image": "open.png"
+    },
+    {
+      "type": "teach",
+      "beat": "launch",
+      "caption": "The shot gives the ball a force — speed in a direction.",
+      "narration": "The hands gives the ball a force: a push with a size and a direction. Here that's 9 metres per second, aimed 62 degrees above the ground.",
+      "reveal": {
+        "launch": true
+      },
+      "durationMs": 10220,
+      "art": "the same scene zoomed in close on the hands striking the ball. ALWAYS the exact same scene: a cartoon outdoor basketball court seen from the side, a hoop on the far right, same player, same court and sky in every image — only the ball's position changes.",
+      "audio": "launch.wav",
+      "audioMs": 9520,
+      "prompt": "Flat 2D storybook illustration for a children's educational video. Warm and friendly, soft rounded shapes, gentle shading, thick clean outlines. Cream paper background (#FCFBF6). Colour palette: grass green #46B06A, sky blue #4E9BE6, sunny yellow #FBD24E, tangerine #F0994A, grape purple #8B7FE8. Wide 16:9 composition, lots of open space, NO text, NO numbers, NO words anywhere in the image.\nKeep the SAME main character in every scene — a cheerful kid about 12 years old with short dark hair, warm brown skin, big friendly eyes, cartoon proportions. Identical clothing and look across all scenes. Wearing a purple basketball jersey number 7, shorts, high-top sneakers, holding/relating to an orange basketball.\nScene to illustrate: the same scene zoomed in close on the hands striking the ball. ALWAYS the exact same scene: a cartoon outdoor basketball court seen from the side, a hoop on the far right, same player, same court and sky in every image — only the ball's position changes..\nMatch the provided reference image EXACTLY — same scene, same characters, same colours, same camera angle. Only move the ball to its new position.",
+      "image": "launch.png"
+    },
+    {
+      "type": "motion",
+      "beat": "ascent",
+      "caption": "That force sends it up and forward.",
+      "narration": "That one force sends the ball both upward and forward at the same time.",
+      "reveal": {
+        "launch": true,
+        "arc": true,
+        "ball": true
+      },
+      "durationMs": 5100,
+      "art": "the ball rising up and forward through the air toward the right, a soft motion trail behind it. ALWAYS the exact same scene: a cartoon outdoor basketball court seen from the side, a hoop on the far right, same player, same court and sky in every image — only the ball's position changes.",
+      "audio": "ascent.wav",
+      "audioMs": 4400,
+      "prompt": "Flat 2D storybook illustration for a children's educational video. Warm and friendly, soft rounded shapes, gentle shading, thick clean outlines. Cream paper background (#FCFBF6). Colour palette: grass green #46B06A, sky blue #4E9BE6, sunny yellow #FBD24E, tangerine #F0994A, grape purple #8B7FE8. Wide 16:9 composition, lots of open space, NO text, NO numbers, NO words anywhere in the image.\nKeep the SAME main character in every scene — a cheerful kid about 12 years old with short dark hair, warm brown skin, big friendly eyes, cartoon proportions. Identical clothing and look across all scenes. Wearing a purple basketball jersey number 7, shorts, high-top sneakers, holding/relating to an orange basketball.\nScene to illustrate: the ball rising up and forward through the air toward the right, a soft motion trail behind it. ALWAYS the exact same scene: a cartoon outdoor basketball court seen from the side, a hoop on the far right, same player, same court and sky in every image — only the ball's position changes..\nMatch the provided reference image EXACTLY — same scene, same characters, same colours, same camera angle. Only move the ball to its new position.",
+      "image": "ascent.png"
+    },
+    {
+      "type": "teach",
+      "beat": "apex",
+      "caption": "Gravity pulls down the whole time. At the top, up-speed is zero.",
+      "narration": "Gravity pulls down the entire flight, shrinking the upward speed until, at the very top, it reaches zero — only the sideways motion is left.",
+      "reveal": {
+        "launch": true,
+        "arc": true,
+        "gravity": true,
+        "height": true
+      },
+      "durationMs": 9900,
+      "art": "the ball at the very top of its arc, high above the middle of the pitch. ALWAYS the exact same scene: a cartoon outdoor basketball court seen from the side, a hoop on the far right, same player, same court and sky in every image — only the ball's position changes.",
+      "audio": "apex.wav",
+      "audioMs": 9200,
+      "prompt": "Flat 2D storybook illustration for a children's educational video. Warm and friendly, soft rounded shapes, gentle shading, thick clean outlines. Cream paper background (#FCFBF6). Colour palette: grass green #46B06A, sky blue #4E9BE6, sunny yellow #FBD24E, tangerine #F0994A, grape purple #8B7FE8. Wide 16:9 composition, lots of open space, NO text, NO numbers, NO words anywhere in the image.\nKeep the SAME main character in every scene — a cheerful kid about 12 years old with short dark hair, warm brown skin, big friendly eyes, cartoon proportions. Identical clothing and look across all scenes. Wearing a purple basketball jersey number 7, shorts, high-top sneakers, holding/relating to an orange basketball.\nScene to illustrate: the ball at the very top of its arc, high above the middle of the pitch. ALWAYS the exact same scene: a cartoon outdoor basketball court seen from the side, a hoop on the far right, same player, same court and sky in every image — only the ball's position changes..\nMatch the provided reference image EXACTLY — same scene, same characters, same colours, same camera angle. Only move the ball to its new position.",
+      "image": "apex.png"
+    },
+    {
+      "type": "motion",
+      "beat": "descent",
+      "caption": "Then gravity wins — it curves back down.",
+      "narration": "With no more upward speed, gravity wins and the ball curves back down to the ground.",
+      "reveal": {
+        "launch": true,
+        "arc": true,
+        "gravity": true,
+        "height": true,
+        "ball": true
+      },
+      "durationMs": 6220,
+      "art": "the ball curving back down toward the goal on the right. ALWAYS the exact same scene: a cartoon outdoor basketball court seen from the side, a hoop on the far right, same player, same court and sky in every image — only the ball's position changes.",
+      "audio": "descent.wav",
+      "audioMs": 5520,
+      "prompt": "Flat 2D storybook illustration for a children's educational video. Warm and friendly, soft rounded shapes, gentle shading, thick clean outlines. Cream paper background (#FCFBF6). Colour palette: grass green #46B06A, sky blue #4E9BE6, sunny yellow #FBD24E, tangerine #F0994A, grape purple #8B7FE8. Wide 16:9 composition, lots of open space, NO text, NO numbers, NO words anywhere in the image.\nKeep the SAME main character in every scene — a cheerful kid about 12 years old with short dark hair, warm brown skin, big friendly eyes, cartoon proportions. Identical clothing and look across all scenes. Wearing a purple basketball jersey number 7, shorts, high-top sneakers, holding/relating to an orange basketball.\nScene to illustrate: the ball curving back down toward the goal on the right. ALWAYS the exact same scene: a cartoon outdoor basketball court seen from the side, a hoop on the far right, same player, same court and sky in every image — only the ball's position changes..\nMatch the provided reference image EXACTLY — same scene, same characters, same colours, same camera angle. Only move the ball to its new position.",
+      "image": "descent.png"
+    },
+    {
+      "type": "teach",
+      "beat": "recap",
+      "caption": "Angle + power decide how far and how high.",
+      "narration": "Put it together: the launch speed and angle set everything. This shot travels 6.85 metres and peaks at 3.22 metres.",
+      "reveal": {
+        "launch": true,
+        "arc": true,
+        "gravity": true,
+        "height": true,
+        "range": true
+      },
+      "equations": [
+        "R = v² · sin(2θ) / g = 6.85 m",
+        "H = v² · sin²(θ) / (2g) = 3.22 m"
+      ],
+      "durationMs": 10540,
+      "art": "a wide view of the court, the player on the left and the hoop on the right. ALWAYS the exact same scene: a cartoon outdoor basketball court seen from the side, a hoop on the far right, same player, same court and sky in every image — only the ball's position changes.",
+      "audio": "recap.wav",
+      "audioMs": 9840,
+      "prompt": "Flat 2D storybook illustration for a children's educational video. Warm and friendly, soft rounded shapes, gentle shading, thick clean outlines. Cream paper background (#FCFBF6). Colour palette: grass green #46B06A, sky blue #4E9BE6, sunny yellow #FBD24E, tangerine #F0994A, grape purple #8B7FE8. Wide 16:9 composition, lots of open space, NO text, NO numbers, NO words anywhere in the image.\nKeep the SAME main character in every scene — a cheerful kid about 12 years old with short dark hair, warm brown skin, big friendly eyes, cartoon proportions. Identical clothing and look across all scenes. Wearing a purple basketball jersey number 7, shorts, high-top sneakers, holding/relating to an orange basketball.\nScene to illustrate: a wide view of the court, the player on the left and the hoop on the right. ALWAYS the exact same scene: a cartoon outdoor basketball court seen from the side, a hoop on the far right, same player, same court and sky in every image — only the ball's position changes..\nMatch the provided reference image EXACTLY — same scene, same characters, same colours, same camera angle. Only move the ball to its new position.",
+      "image": "recap.png"
+    },
+    {
+      "type": "check",
+      "beat": "check",
+      "prompt": "If the ball went up at a flatter angle, would it travel farther or land sooner?",
+      "answer": "A flatter angle usually lands sooner and reaches a lower peak. The farthest distance comes at about 45°.",
+      "durationMs": 0
+    }
+  ]
+}

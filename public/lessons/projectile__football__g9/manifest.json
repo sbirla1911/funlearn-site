@@ -1,0 +1,140 @@
+{
+  "cacheKey": "projectile__football__g9",
+  "concept": "projectile",
+  "interest": "football",
+  "grade": 9,
+  "inputs": {
+    "v": 20,
+    "theta": 55,
+    "g": 9.81
+  },
+  "derived": {
+    "vx": 11.47,
+    "vy0": 16.38,
+    "range": 38.32,
+    "hMax": 13.68,
+    "tFlight": 3.34,
+    "tApex": 1.67
+  },
+  "voice": "Leda",
+  "generatedAt": "2026-10-30T14:03:48.533Z",
+  "imageStatus": "ready",
+  "providers": {
+    "image": "gemini:gemini-2.5-flash-image",
+    "tts": "gemini:gemini-3.8-flash-tts"
+  },
+  "scenes": [
+    {
+      "type": "motion",
+      "beat": "open",
+      "caption": "Watch the kick.",
+      "narration": "Watch closely as the ball leaves the boot.",
+      "reveal": {},
+      "durationMs": 3660,
+      "art": "the footballer on the left beginning a run-up to a ball resting on the grass, the goal on the right. ALWAYS the exact same scene: a sunny cartoon football pitch seen from the side, a white goalpost on the far right, a few other young players standing in the background, green grass, blue sky with soft clouds. Same field, same goal, same characters, same camera angle in every image — only the ball's position changes.",
+      "audio": "open.wav",
+      "audioMs": 2960,
+      "prompt": "Flat 2D storybook illustration for a children's educational video. Warm and friendly, soft rounded shapes, gentle shading, thick clean outlines. Cream paper background (#FCFBF6). Colour palette: grass green #46B06A, sky blue #4E9BE6, sunny yellow #FBD24E, tangerine #F0994A, grape purple #8B7FE8. Wide 16:9 composition, lots of open space, NO text, NO numbers, NO words anywhere in the image.\nKeep the SAME main character in every scene — a cheerful kid about 12 years old with short dark hair, warm brown skin, big friendly eyes, cartoon proportions. Identical clothing and look across all scenes. Wearing a red football jersey with a white number 7, white shorts, football boots. There is a classic black-and-white football.\nScene to illustrate: the footballer on the left beginning a run-up to a ball resting on the grass, the goal on the right. ALWAYS the exact same scene: a sunny cartoon football pitch seen from the side, a white goalpost on the far right, a few other young players standing in the background, green grass, blue sky with soft clouds. Same field, same goal, same characters, same camera angle in every image — only the ball's position changes..",
+      "image": "open.png"
+    },
+    {
+      "type": "teach",
+      "beat": "launch",
+      "caption": "The kick gives the ball a force — speed in a direction.",
+      "narration": "The boot gives the ball a force: a push with a size and a direction. Here that's 20 metres per second, aimed 55 degrees above the ground.",
+      "reveal": {
+        "launch": true
+      },
+      "durationMs": 10380,
+      "art": "the same scene zoomed in close on the boot striking the ball. ALWAYS the exact same scene: a sunny cartoon football pitch seen from the side, a white goalpost on the far right, a few other young players standing in the background, green grass, blue sky with soft clouds. Same field, same goal, same characters, same camera angle in every image — only the ball's position changes.",
+      "audio": "launch.wav",
+      "audioMs": 9680,
+      "prompt": "Flat 2D storybook illustration for a children's educational video. Warm and friendly, soft rounded shapes, gentle shading, thick clean outlines. Cream paper background (#FCFBF6). Colour palette: grass green #46B06A, sky blue #4E9BE6, sunny yellow #FBD24E, tangerine #F0994A, grape purple #8B7FE8. Wide 16:9 composition, lots of open space, NO text, NO numbers, NO words anywhere in the image.\nKeep the SAME main character in every scene — a cheerful kid about 12 years old with short dark hair, warm brown skin, big friendly eyes, cartoon proportions. Identical clothing and look across all scenes. Wearing a red football jersey with a white number 7, white shorts, football boots. There is a classic black-and-white football.\nScene to illustrate: the same scene zoomed in close on the boot striking the ball. ALWAYS the exact same scene: a sunny cartoon football pitch seen from the side, a white goalpost on the far right, a few other young players standing in the background, green grass, blue sky with soft clouds. Same field, same goal, same characters, same camera angle in every image — only the ball's position changes..\nMatch the provided reference image EXACTLY — same scene, same characters, same colours, same camera angle. Only move the ball to its new position.",
+      "image": "launch.png"
+    },
+    {
+      "type": "motion",
+      "beat": "ascent",
+      "caption": "That force sends it up and forward.",
+      "narration": "That one force sends the ball both upward and forward at the same time.",
+      "reveal": {
+        "launch": true,
+        "arc": true,
+        "ball": true
+      },
+      "durationMs": 5900,
+      "art": "the ball rising up and forward through the air toward the right, a soft motion trail behind it. ALWAYS the exact same scene: a sunny cartoon football pitch seen from the side, a white goalpost on the far right, a few other young players standing in the background, green grass, blue sky with soft clouds. Same field, same goal, same characters, same camera angle in every image — only the ball's position changes.",
+      "audio": "ascent.wav",
+      "audioMs": 5200,
+      "prompt": "Flat 2D storybook illustration for a children's educational video. Warm and friendly, soft rounded shapes, gentle shading, thick clean outlines. Cream paper background (#FCFBF6). Colour palette: grass green #46B06A, sky blue #4E9BE6, sunny yellow #FBD24E, tangerine #F0994A, grape purple #8B7FE8. Wide 16:9 composition, lots of open space, NO text, NO numbers, NO words anywhere in the image.\nKeep the SAME main character in every scene — a cheerful kid about 12 years old with short dark hair, warm brown skin, big friendly eyes, cartoon proportions. Identical clothing and look across all scenes. Wearing a red football jersey with a white number 7, white shorts, football boots. There is a classic black-and-white football.\nScene to illustrate: the ball rising up and forward through the air toward the right, a soft motion trail behind it. ALWAYS the exact same scene: a sunny cartoon football pitch seen from the side, a white goalpost on the far right, a few other young players standing in the background, green grass, blue sky with soft clouds. Same field, same goal, same characters, same camera angle in every image — only the ball's position changes..\nMatch the provided reference image EXACTLY — same scene, same characters, same colours, same camera angle. Only move the ball to its new position.",
+      "image": "ascent.png"
+    },
+    {
+      "type": "teach",
+      "beat": "apex",
+      "caption": "Gravity pulls down the whole time. At the top, up-speed is zero.",
+      "narration": "Gravity pulls down the entire flight, shrinking the upward speed until, at the very top, it reaches zero — only the sideways motion is left.",
+      "reveal": {
+        "launch": true,
+        "arc": true,
+        "gravity": true,
+        "height": true
+      },
+      "durationMs": 10020,
+      "art": "the ball at the very top of its arc, high above the middle of the pitch. ALWAYS the exact same scene: a sunny cartoon football pitch seen from the side, a white goalpost on the far right, a few other young players standing in the background, green grass, blue sky with soft clouds. Same field, same goal, same characters, same camera angle in every image — only the ball's position changes.",
+      "audio": "apex.wav",
+      "audioMs": 9320,
+      "prompt": "Flat 2D storybook illustration for a children's educational video. Warm and friendly, soft rounded shapes, gentle shading, thick clean outlines. Cream paper background (#FCFBF6). Colour palette: grass green #46B06A, sky blue #4E9BE6, sunny yellow #FBD24E, tangerine #F0994A, grape purple #8B7FE8. Wide 16:9 composition, lots of open space, NO text, NO numbers, NO words anywhere in the image.\nKeep the SAME main character in every scene — a cheerful kid about 12 years old with short dark hair, warm brown skin, big friendly eyes, cartoon proportions. Identical clothing and look across all scenes. Wearing a red football jersey with a white number 7, white shorts, football boots. There is a classic black-and-white football.\nScene to illustrate: the ball at the very top of its arc, high above the middle of the pitch. ALWAYS the exact same scene: a sunny cartoon football pitch seen from the side, a white goalpost on the far right, a few other young players standing in the background, green grass, blue sky with soft clouds. Same field, same goal, same characters, same camera angle in every image — only the ball's position changes..\nMatch the provided reference image EXACTLY — same scene, same characters, same colours, same camera angle. Only move the ball to its new position.",
+      "image": "apex.png"
+    },
+    {
+      "type": "motion",
+      "beat": "descent",
+      "caption": "Then gravity wins — it curves back down.",
+      "narration": "With no more upward speed, gravity wins and the ball curves back down to the ground.",
+      "reveal": {
+        "launch": true,
+        "arc": true,
+        "gravity": true,
+        "height": true,
+        "ball": true
+      },
+      "durationMs": 6340,
+      "art": "the ball curving back down toward the goal on the right. ALWAYS the exact same scene: a sunny cartoon football pitch seen from the side, a white goalpost on the far right, a few other young players standing in the background, green grass, blue sky with soft clouds. Same field, same goal, same characters, same camera angle in every image — only the ball's position changes.",
+      "audio": "descent.wav",
+      "audioMs": 5640,
+      "prompt": "Flat 2D storybook illustration for a children's educational video. Warm and friendly, soft rounded shapes, gentle shading, thick clean outlines. Cream paper background (#FCFBF6). Colour palette: grass green #46B06A, sky blue #4E9BE6, sunny yellow #FBD24E, tangerine #F0994A, grape purple #8B7FE8. Wide 16:9 composition, lots of open space, NO text, NO numbers, NO words anywhere in the image.\nKeep the SAME main character in every scene — a cheerful kid about 12 years old with short dark hair, warm brown skin, big friendly eyes, cartoon proportions. Identical clothing and look across all scenes. Wearing a red football jersey with a white number 7, white shorts, football boots. There is a classic black-and-white football.\nScene to illustrate: the ball curving back down toward the goal on the right. ALWAYS the exact same scene: a sunny cartoon football pitch seen from the side, a white goalpost on the far right, a few other young players standing in the background, green grass, blue sky with soft clouds. Same field, same goal, same characters, same camera angle in every image — only the ball's position changes..\nMatch the provided reference image EXACTLY — same scene, same characters, same colours, same camera angle. Only move the ball to its new position.",
+      "image": "descent.png"
+    },
+    {
+      "type": "teach",
+      "beat": "recap",
+      "caption": "Angle + power decide how far and how high.",
+      "narration": "Put it together: the launch speed and angle set everything. This kick travels 38.32 metres and peaks at 13.68 metres.",
+      "reveal": {
+        "launch": true,
+        "arc": true,
+        "gravity": true,
+        "height": true,
+        "range": true
+      },
+      "equations": [
+        "R = v² · sin(2θ) / g = 38.32 m",
+        "H = v² · sin²(θ) / (2g) = 13.68 m"
+      ],
+      "durationMs": 10260,
+      "art": "a wide view showing the whole pitch, the player on the left and the goal on the right. ALWAYS the exact same scene: a sunny cartoon football pitch seen from the side, a white goalpost on the far right, a few other young players standing in the background, green grass, blue sky with soft clouds. Same field, same goal, same characters, same camera angle in every image — only the ball's position changes.",
+      "audio": "recap.wav",
+      "audioMs": 9560,
+      "prompt": "Flat 2D storybook illustration for a children's educational video. Warm and friendly, soft rounded shapes, gentle shading, thick clean outlines. Cream paper background (#FCFBF6). Colour palette: grass green #46B06A, sky blue #4E9BE6, sunny yellow #FBD24E, tangerine #F0994A, grape purple #8B7FE8. Wide 16:9 composition, lots of open space, NO text, NO numbers, NO words anywhere in the image.\nKeep the SAME main character in every scene — a cheerful kid about 12 years old with short dark hair, warm brown skin, big friendly eyes, cartoon proportions. Identical clothing and look across all scenes. Wearing a red football jersey with a white number 7, white shorts, football boots. There is a classic black-and-white football.\nScene to illustrate: a wide view showing the whole pitch, the player on the left and the goal on the right. ALWAYS the exact same scene: a sunny cartoon football pitch seen from the side, a white goalpost on the far right, a few other young players standing in the background, green grass, blue sky with soft clouds. Same field, same goal, same characters, same camera angle in every image — only the ball's position changes..\nMatch the provided reference image EXACTLY — same scene, same characters, same colours, same camera angle. Only move the ball to its new position.",
+      "image": "recap.png"
+    },
+    {
+      "type": "check",
+      "beat": "check",
+      "prompt": "If the ball went up at a flatter angle, would it travel farther or land sooner?",
+      "answer": "A flatter angle usually lands sooner and reaches a lower peak. The farthest distance comes at about 45°.",
+      "durationMs": 0
+    }
+  ]
+}

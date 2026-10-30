@@ -120,10 +120,33 @@ body {
 .is-playing .anim-fade { animation: lp-fade-in 0.6s ease both; }
 .is-playing .anim-pulse { animation: lp-pulse 1.4s ease-in-out infinite; }
 
+/* ─────────── Lesson still: camera-feel (Ken Burns) + soft entrance ─────────── */
+@keyframes kb-zoom {
+  0% { transform: scale(1.02) translate(0, 0); }
+  100% { transform: scale(1.12) translate(-1.5%, -1%); }
+}
+@keyframes kb-zoom-in {
+  0% { transform: scale(1.05); }
+  100% { transform: scale(1.22); }
+}
+@keyframes still-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.kenburns {
+  animation: kb-zoom 9s ease-out both, still-in 0.7s ease both;
+  transform-origin: center;
+}
+.kenburns-zoom {
+  animation: kb-zoom-in 7s ease-out both, still-in 0.7s ease both;
+  transform-origin: 50% 60%;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+  .kenburns, .kenburns-zoom { animation: still-in 0.4s ease both; transform: none; }
   .reveal {
     opacity: 1;
     transform: none;
